@@ -1,0 +1,27 @@
+DROP DATABASE IF EXISTS Login_System;
+CREATE DATABASE Login_System;
+USE Login_System;
+
+CREATE TABLE utenti (
+    id_utente INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL,
+    cognome VARCHAR(50) NOT NULL,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    tipo ENUM('organizzazzione', 'admin', 'persona') NOT NULL DEFAULT 'persona'
+);
+
+INSERT INTO utenti (nome, cognome, username, password_hash, tipo) VALUES 
+('Mario', 'Rossi', 'mr', SHA2('password123', 256), 'persona'),
+('Luca', 'Bianchi', 'luca_bianchi', SHA2('password456', 256), 'persona'),
+('Giulia', 'Verdi', 'giulia_verdi', SHA2('password789', 256), 'persona'),
+('Andrea', 'Ferrari', 'andrea_ferrari', SHA2('andreaPass', 256), 'persona'),
+('Sara', 'Esposito', 'sara_esposito', SHA2('saraSecure', 256), 'persona'),
+('Marco', 'Romano', 'marco_romano', SHA2('marcoPass1', 256), 'persona'),
+('Elisa', 'Colombo', 'elisa_colombo', SHA2('elisaPass2', 256), 'persona'),
+('Davide', 'Moretti', 'davide_moretti', SHA2('davidePass3', 256), 'persona'),
+('Francesca', 'Conti', 'francesca_conti', SHA2('francescaPass4', 256), 'persona'),
+('Alessandro', 'De Luca', 'alessandro_deluca', SHA2('alessandroPass5', 256), 'persona'),
+-- Admin
+('Giovanni', 'Russo', 'giovanni_russo', SHA2('adminPass1', 256), 'admin'),
+('Martina', 'Gallo', 'martina_gallo', SHA2('adminPass2', 256), 'admin');
